@@ -1,9 +1,12 @@
 --- 
-title: "R studio cloudで日本語PDFを作成する"
+title: "Rstudio cloudで日本語PDFを作成する"
 site: bookdown::bookdown_site
 output:
   bookdown::pdf_book:
     latex_engine: xelatex
+header-includes: 
+  - \usepackage{zxjatype} 
+  - \usepackage[haranoaji]{zxjafont} 
 documentclass: bxjsarticle
 classoption: xelatex,ja=standard
 ---
@@ -15,13 +18,13 @@ knitr::opts_chunk$set(echo = TRUE,
                       warning = FALSE)
 ```
 
-# R studio cloudで日本語PDFを作成する
+# Rstudio cloudで日本語PDFを作成する
 
-R studio cloud (Rstudio.cloud) はブラウザ上でR studioを利用できる優れたサービスです．
+Rstudio cloudはブラウザ上でRstudioを利用できる優れたサービスです．
 しかし，デフォルトのままでは日本語を含むPDFを作成することが困難です．
 日本語を含むPDFを作成する方法がインターネット上になかったのでまとめました．
 
-R studio cloudで日本語を含むPDFを作成するには，下記のようにコードを走らせます．
+Rstudio cloudで日本語を含むPDFを作成するには，下記のようにコードを走らせます．
 下記ではtinytexでデフォルトで入っていない（はずの）tikz用のパッケージも一緒にインストールしています．
 
 ```{r}
@@ -42,8 +45,6 @@ tinytex::tlmgr_install(c("gf", "preview", "xcolor"), usermode = TRUE)
 これで日本語pdfが作成できました．
 
 なぜか「う」が表示されないので何かわかる人がいたら教えて下さい．
-
-フォントをipaexなどに変えようとしてもエラーが出てしまうので，わかる方は教えて下さい．
 
 # 参考HP
 
