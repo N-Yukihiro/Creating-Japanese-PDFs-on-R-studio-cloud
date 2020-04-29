@@ -1,0 +1,47 @@
+---
+title: "Rstudio cloudで日本語の入ったグラフをggplot2を利用して描く"
+site: bookdown::bookdown_site
+output:
+  bookdown::pdf_book:
+    latex_engine: xelatex
+header-includes: 
+  - \usepackage{zxjatype} 
+  - \usepackage[haranoaji]{zxjafont} 
+documentclass: bxjsarticle
+classoption: xelatex,ja=standard
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 日本語の図を出力する
+
+Rstudio cloudで日本語を利用するのは難しいです．
+`showtext`パッケージを利用して日本語を含む図を描画していきます．
+しかし, 残念なことにRstudio Viewerでは表示できないので，一度保存してから読み出すようにします．
+
+ここでは，googleのフォントを利用しています．
+googleが公開しているフォントは各自で好きなものを選択してください．
+
+https://fonts.google.com/
+
+
+```{r}
+library(ggplot2)
+library(showtext)
+font_add_google("Noto Sans JP", "noto")
+showtext_auto()
+p <- ggplot(data.frame(X=c(-4,4)), aes(x = X)) +
+  stat_function(fun=dnorm) +
+  ggtitle("正規分布") +
+  theme_gray (base_family = "noto")
+ 
+
+
+ggsave("figure-jp.pdf", p)
+```
+
+
+![](figure-jp.pdf) 
+

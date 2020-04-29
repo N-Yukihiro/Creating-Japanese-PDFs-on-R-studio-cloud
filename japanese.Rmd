@@ -27,6 +27,13 @@ Rstudio cloudはブラウザ上でRstudioを利用できる優れたサービス
 Rstudio cloudで日本語を含むPDFを作成するには，下記のようにコードを走らせます．
 下記ではtinytexでデフォルトで入っていない（はずの）tikz用のパッケージも一緒にインストールしています．
 
+
+```{r eval=FALSE}
+install.packages("rmarkdown")
+install.packages("tinytex")
+install.packages("bookdown")
+```
+
 ```{r}
 library(tinytex)
 options(tinytex.verbose = TRUE)
