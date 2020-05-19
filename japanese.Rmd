@@ -1,6 +1,5 @@
 --- 
 title: "Rstudio cloudで日本語PDFを作成する"
-site: bookdown::bookdown_site
 output:
   bookdown::pdf_book:
     keep_tex: true
